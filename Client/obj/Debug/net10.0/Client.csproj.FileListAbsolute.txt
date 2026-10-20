@@ -1,0 +1,15 @@
+/Users/filipandersen/Projects/depth-projects/auth-lite/Client/bin/Debug/net10.0/Client
+/Users/filipandersen/Projects/depth-projects/auth-lite/Client/bin/Debug/net10.0/Client.deps.json
+/Users/filipandersen/Projects/depth-projects/auth-lite/Client/bin/Debug/net10.0/Client.runtimeconfig.json
+/Users/filipandersen/Projects/depth-projects/auth-lite/Client/bin/Debug/net10.0/Client.dll
+/Users/filipandersen/Projects/depth-projects/auth-lite/Client/bin/Debug/net10.0/Client.pdb
+/Users/filipandersen/Projects/depth-projects/auth-lite/Client/obj/Debug/net10.0/Client.GeneratedMSBuildEditorConfig.editorconfig
+/Users/filipandersen/Projects/depth-projects/auth-lite/Client/obj/Debug/net10.0/Client.AssemblyInfoInputs.cache
+/Users/filipandersen/Projects/depth-projects/auth-lite/Client/obj/Debug/net10.0/Client.AssemblyInfo.cs
+/Users/filipandersen/Projects/depth-projects/auth-lite/Client/obj/Debug/net10.0/Client.csproj.CoreCompileInputs.cache
+/Users/filipandersen/Projects/depth-projects/auth-lite/Client/obj/Debug/net10.0/Client.sourcelink.json
+/Users/filipandersen/Projects/depth-projects/auth-lite/Client/obj/Debug/net10.0/Client.dll
+/Users/filipandersen/Projects/depth-projects/auth-lite/Client/obj/Debug/net10.0/refint/Client.dll
+/Users/filipandersen/Projects/depth-projects/auth-lite/Client/obj/Debug/net10.0/Client.pdb
+/Users/filipandersen/Projects/depth-projects/auth-lite/Client/obj/Debug/net10.0/Client.genruntimeconfig.cache
+/Users/filipandersen/Projects/depth-projects/auth-lite/Client/obj/Debug/net10.0/ref/Client.dll
