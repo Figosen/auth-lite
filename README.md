@@ -24,6 +24,3 @@ A custom C# Identity Provider built from scratch to master auth internals. Imple
 - **Goal:** Fully functional mini-authorization server.
 - **`/authorize`:** Receives `client_id`, `redirect_uri`, and `code_challenge` (PKCE) and issues a one-time `authorization_code`.
 - **`/token`:** Verifies `code_verifier` against `code_challenge` and issues the final tokens.
-* **Mål:** Fuldgyldig mini-authorization server.
-* **`/authorize`:** Modtager `client_id`, `redirect_uri` og `code_challenge` (PKCE) og udsteder en engangs `authorization_code`.
-* **`/token`:** Verificerer `code_verifier` mod `code_challenge` og udsteder de endelige tokens.
