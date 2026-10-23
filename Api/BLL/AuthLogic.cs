@@ -1,4 +1,5 @@
 using System.Security.Cryptography;
+using Api.BLL.Context;
 using Api.DTO;
 using Api.Util;
 using Microsoft.IdentityModel.Tokens;
@@ -11,7 +12,7 @@ public interface IAuthLogic
 
 public record JWTTokens(string AccessToken, string IdToken, string RefreshToken);
 
-public class AuthLogic(JwtBuilder jwtBuilder) : IAuthLogic
+public class AuthLogic(JwtBuilder jwtBuilder, AuthDbContext dbContext) : IAuthLogic
 {
     private JwtHeader jwtHeader = new(Constants.Auth.HS256, Constants.Auth.JWT);
     public JWTTokens LoginLogic(LoginDto login)
