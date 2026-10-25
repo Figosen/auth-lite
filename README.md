@@ -5,7 +5,7 @@ A custom C# Identity Provider built from scratch to master auth internals. Imple
 <!-- ![Hihi](https://img.shields.io/badge/status-COMPLETED-succes) -->
 ### 1. Basic Auth & Manual Token Generation ![Hihi](https://img.shields.io/badge/status-IN_PROGRESS-blue)
 - **Goal:** Manual JWT construction without external libraries (`Header.Payload.Signature`).
-- **Endpoints:** `/api/login` and `/api/refresh`.
+- **Endpoints:** `/api/login`, `/api/register` and `/api/refresh`.
 - **Tokens:** Generation of **Access Token** (authorization), **ID Token** (authentication), and **Refresh Token** (rotation/db storage).
 
 ### 2. Basic Authorization & Custom Middleware ![Hihi](https://img.shields.io/badge/status-TODO-inactive)
