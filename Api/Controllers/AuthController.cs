@@ -1,4 +1,4 @@
-using System;
+using Api.DTO;
 using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.AspNetCore.Mvc;
 
@@ -6,21 +6,45 @@ namespace Api.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class AuthController : ControllerBase
+public class AuthController(IAuthLogic authLogic) : ControllerBase
 {
     [HttpPost("login")]
-    public ActionResult<string> Login(LoginRequest request)
+    public async Task<ActionResult<string>> Login(LoginRequest request)
     {
-        var rand = new Random();
-        if (rand.NextInt64(1,4) == 2)
+        try
         {
-            return Unauthorized("Øv");
+            var tokens = await authLogic.LoginAsync(request);
+            return Ok(tokens);
         }
-        return Ok("test");
+        catch (Exception e)
+        {
+            return Unauthorized($"Unauthorized: {e.Message}");
+        }
     }
     [HttpPost("refresh")]
-    public ActionResult<string> refresh(RefreshRequest request)
+    public async Task<ActionResult<string>> refresh(RefreshRequest request)
     {
-        return Ok(request.RefreshToken); // Noice
+        try
+        {
+            var tokens = await authLogic.RefreshAsync(request);
+            return Ok(tokens);
+        }
+        catch (Exception e)
+        {
+            return Unauthorized($"Unauthorized: {e.Message}");
+        }
+    }
+    [HttpPost("register")]
+    public async Task<ActionResult<string>> register(RegisterDto request)
+    {
+        try
+        {
+            var tokens = await authLogic.RegisterAsync(request);
+            return Ok(tokens);
+        }
+        catch (Exception e)
+        {
+            return Unauthorized($"Unauthorized: {e.Message}");
+        }
     }
 }

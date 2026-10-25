@@ -1,15 +1,18 @@
 using Api.BLL.Context;
 using Api.Util;
 using Microsoft.EntityFrameworkCore;
+using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddOpenApi();
+
 builder.Services.AddControllers();
 builder.Services.AddDbContext<AuthDbContext>(o =>
     o.UseSqlServer(builder.Configuration.GetConnectionString("Default")));
 
 // IoC
 builder.Services.AddScoped<IAuthLogic, AuthLogic>();
+
 
 var jwtConfig = builder.Configuration.GetRequiredSection("Jwt");
 var secretKey = builder.Configuration.GetValue<string>(Constants.Auth.Secretkey);
@@ -20,6 +23,7 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
+    app.MapScalarApiReference();
 }
 
 // TODO: I'll maybe miss some CORS conf

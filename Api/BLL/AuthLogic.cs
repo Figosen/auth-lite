@@ -5,14 +5,14 @@ using Api.BLL.Context;
 using Api.DTO;
 using Api.Models.EF;
 using Api.Util;
+using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Identity.Client;
 using Microsoft.IdentityModel.Tokens;
 
 public interface IAuthLogic
 {
-    Task<JWTTokens> LoginAsync(LoginDto login);
-    Task<JWTTokens> RefreshAsync(RefreshDto refreshDto);
+    Task<JWTTokens> LoginAsync(LoginRequest login);
+    Task<JWTTokens> RefreshAsync(RefreshRequest refreshDto);
     Task<JWTTokens> RegisterAsync(RegisterDto register);
 }
 
@@ -25,7 +25,7 @@ public class AuthLogic(JwtBuilder jwtBuilder, AuthDbContext dbContext, IConfigur
     private readonly JwtHeader _jwtHeader = new(Constants.Auth.HS256, Constants.Auth.JWT);
     private static readonly TimeSpan RefreshLifetime = TimeSpan.FromDays(7); // TODO: 7 skal være en constant
 
-    public async Task<JWTTokens> LoginAsync(LoginDto login)
+    public async Task<JWTTokens> LoginAsync(LoginRequest login)
     {
         var email = login.Email.Trim().ToLowerInvariant();
         var user = await dbContext.Auths.FirstOrDefaultAsync(u => u.Email == email);
@@ -40,7 +40,7 @@ public class AuthLogic(JwtBuilder jwtBuilder, AuthDbContext dbContext, IConfigur
         return new JWTTokens(GenerateAccessToken(user), GenerateIdToken(user), raw);
     }
     
-    public async Task<JWTTokens> RefreshAsync(RefreshDto dto)
+    public async Task<JWTTokens> RefreshAsync(RefreshRequest dto)
     {
         var hashedRefresh = HashToken(dto.RefreshToken);
         var user = await dbContext.Auths.FirstOrDefaultAsync(u => u.RefreshTokenHash == hashedRefresh);
