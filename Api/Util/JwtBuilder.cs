@@ -1,4 +1,5 @@
 using System;
+using System.IdentityModel.Tokens.Jwt;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
@@ -6,7 +7,6 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace Api.Util;
 // TODO kan måske gøres mere SOLID ved CI
-public record JwtHeader(string alg, string typ);
 public class JwtBuilder
 {
     private readonly string _secretKey;

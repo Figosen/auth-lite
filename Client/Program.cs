@@ -1,11 +1,4 @@
-﻿using System;
-using System.IO;
-using System.Net.Http.Json;
-using SixLabors.ImageSharp;
-using SixLabors.ImageSharp.PixelFormats;
-using SixLabors.ImageSharp.Processing;
-using Api.DTO;
-using Client.Util;
+﻿using Client.Util;
 
 class Program
 {
@@ -14,7 +7,7 @@ class Program
         var client = new HttpClient();
         var url = "http://localhost:5042/Auth";
         var presentationLogic = new PresentationLogic(client,url);
-        int selection = 0;
+        int selection;
         do
         {
             Console.WriteLine("========== Auth Lite ==========");
@@ -28,7 +21,7 @@ class Program
 
         switch (selection)
         {
-            case 1:
+            case 1: // TODO: Lav en rigtig switch pattern
                 await presentationLogic.Login();
                 break;
             case 2:
@@ -38,6 +31,3 @@ class Program
         }
     }
 }
-
-public record EncodedJWTTokens(string AccessToken, string IdToken, string RefreshToken);
-public record DecodedJWTTokens(AccessTokenPayload AccessToken, IdTokenPayload IdToken, string RefreshToken);
